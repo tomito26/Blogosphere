@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import './App.css';
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import profilePhoto from "./assets/carlosjames.webp";
 import uiux from './assets/uiux.webp';
