@@ -27,14 +27,14 @@ const Blogs = ({ blog }) => {
 					</Link>
 				</div>
 				<div className="content-image">
-					<Link to={`/blog/${blog.id}`}>
+					<Link to={`/blogs/${blog.id}`}>
 						<img src={blog.imageUrl} alt={blog.title} />
 					</Link>
 				</div>
 			</div>
 			<div className="card-footer">
 				<div className="footer-info">
-					<p className="tag">{blog.tag}</p>
+					<p className="tag"><Link className="tag-link" to={`/similar-blogs/${blog.tag}`}>{blog.tag}</Link></p>
 					<p>{blog.duration_reading}</p>
 				</div>
 				<div className="footer-icons">

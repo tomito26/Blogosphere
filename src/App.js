@@ -7,6 +7,7 @@ import profilePhoto from "./assets/carlosjames.webp";
 import uiux from './assets/uiux.webp';
 import Blog from './components/Blog';
 import Write from './pages/Write';
+import SimilarBlogs from './pages/SimilarBlogs';
 
 
 
@@ -21,9 +22,11 @@ function App() {
       date_posted: "2023-01-26",
       author: {
         username: "Carlos James",
-        profileImage: profilePhoto
+        profileImage: profilePhoto,
+        about: "Frontend Developer at Netflix",
+        followers: "5.1K"
       },
-      tag: "Web Development",
+      tag: "Web",
       duration_reading: "3min read"
 
     },
@@ -35,7 +38,9 @@ function App() {
       date_posted: "2022-07-1",
       author: {
         username: "Jarvis",
-        profileImage: "https://unsplash.com/photos/sibVwORYqs0/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTB8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fHx8MTY3OTUyODU0NQ&force=true&w=640"
+        profileImage: "https://unsplash.com/photos/sibVwORYqs0/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTB8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fHx8MTY3OTUyODU0NQ&force=true&w=640",
+        about: " Mern Stack Developer",
+        followers: "2.5k "
       },
       tag: "Nodejs",
       duration_reading: "4min read"
@@ -48,9 +53,11 @@ function App() {
       date_posted: "2022-05-28",
       author: {
         username: "Mcloud",
-        profileImage: "https://unsplash.com/photos/DS1h0ubirIU/download?force=true&w=640"
+        profileImage: "https://unsplash.com/photos/DS1h0ubirIU/download?force=true&w=640",
+        about: "Software Developer at Mobi Dev",
+        followers: "100"
       },
-      tag: "UI design",
+      tag: "UI",
       duration_reading: "3min read"
     }
 
@@ -64,9 +71,9 @@ function App() {
     blog.id = blogs.length + 1;
     const username = "Axelrod"
     const profileImage = "https://unsplash.com/photos/YUu9UAcOKZ4/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjc5OTExOTg4&force=true&w=640"
-    blog.author =  { username,profileImage } 
+    blog.author = { username, profileImage }
     console.log(blog)
-    const newBlog = [ blog, ...blogs];
+    const newBlog = [blog, ...blogs];
     setBlogs(newBlog);
     navigate('/');
 
@@ -76,14 +83,15 @@ function App() {
 
   return (
 
-      <div className="App" onDoubleClick={() => setDropdownMenu(false)}>
-        <Header onToggleMenu={toggleMenu} dropdownMenu={dropdownMenu} />
-        <Routes>
-          <Route path='/' element={<Home blogs={blogs} />} />
-          <Route path="/blogs/:blogId" element={<Blog blogs={blogs} />} />
-          <Route path="/write" element={<Write addBlog={addNewBlog} />} />
-        </Routes>
-      </div>
+    <div className="App" onDoubleClick={() => setDropdownMenu(false)}>
+      <Header onToggleMenu={toggleMenu} dropdownMenu={dropdownMenu} />
+      <Routes>
+        <Route path='/' element={<Home blogs={blogs} />} />
+        <Route path="/blogs/:blogId" element={<Blog blogs={blogs} />} />
+        <Route path="/write" element={<Write addBlog={addNewBlog} />} />
+        <Route path='/similar-blogs/:blogTag' element={<SimilarBlogs blogs={blogs} />} />
+      </Routes>
+    </div>
 
   );
 }

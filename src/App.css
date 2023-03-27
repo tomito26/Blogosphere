@@ -166,7 +166,7 @@ nav ul li .dropdown-menu img {
 }
 
 .tag-wrapper p:hover {
-  background-color: #ddd;
+  background-color: #eee;
 }
 
 .card {
@@ -269,7 +269,16 @@ nav ul li .dropdown-menu img {
   padding: 5px 10px;
   border-radius: 20px;
   margin-right: 10px;
+
+}
+
+.card-footer .tag-link {
   color: #333;
+  text-decoration: none;
+}
+
+.card-footer .tag:hover {
+  background-color: #eee;
 }
 
 .footer-info {
@@ -299,12 +308,17 @@ nav ul li .dropdown-menu img {
 }
 
 /* blog page */
+.blog-container {
+  width: 1100px;
+  margin: 120px auto;
+  display: flex;
+
+}
 
 .blog-wrapper {
   background-color: #fff;
   width: 750px;
   border-radius: 5px;
-  margin: 120px auto;
   padding: 20px;
 
 }
@@ -401,11 +415,86 @@ nav ul li .dropdown-menu img {
   color: #333;
 }
 
+.author-info {
+  background-color: #fff;
+  width: 350px;
+  height: 300px;
+  padding: 50px 30px;
+  border-radius: 5px;
+  position: fixed;
+  right: 50px;
+
+}
+
+.author-profile-image {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.author-profile-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+
+}
+
+.author-name {
+  margin-top: 10px;
+}
+
+.author-description,
+.followers {
+  color: grey;
+  font-size: 15px;
+}
+
+.followers {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+}
+
+.buttons .followBtn {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  color: #fff;
+  background-color: #3795BD;
+  font: inherit;
+  border-radius: 100px;
+}
+
+.buttons .followBtn:hover,
+.buttons .emailBtn:hover {
+  background-color: #2F58CD;
+}
+
+.buttons .emailBtn {
+  height: 35px;
+  width: 35px;
+  color: #fff;
+  border: none;
+  background-color: #3795BD;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* write page  */
 .form-container {
   width: 800px;
   /* background-color: #fff; */
-  margin: 30px auto;
+  margin: 110px auto;
   padding: 20px 30px;
 }
 
@@ -448,6 +537,7 @@ form .btn {
   border-radius: 5px;
   font-size: 15px;
   font-family: inherit;
+  margin-top: 20px;
 }
 
 form .btn:hover {
