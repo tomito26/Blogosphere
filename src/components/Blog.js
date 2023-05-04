@@ -2,12 +2,34 @@ import { useParams } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaLinkedin, FaLink } from "react-icons/fa";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { BsEnvelopePlus } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import ProfileLogo from '../assets/profile.png'
 
-const Blog = ({ blogs }) => {
+
+const Blog = () => {
+  const[blogDetails, setBlogDetails] = useState({});
+  const[authorProfile, setAuthorProfile]= useState({});
   const { blogId } = useParams();
-  const blogItem = blogs.filter(blog => blog.id == blogId)[0];
-  const datePosted = new Date(blogItem.date_posted).toDateString().slice(4);
+ 
+  useEffect(() => {
+    const getBlog = async () => {
+      const res = await fetch(`http://localhost:8000/api/blogosphere/blog_detail/${blogId}/`);
+      const data = await res.json();
+      setBlogDetails(data.data);
+    }
+    getBlog();
+    const getAuthor = async () => {
+      if(blogDetails){
+        const res = await fetch(`http://localhost:8000/api/account/user_detail/${blogDetails.author}/`)
+        const data = await res.json();
+        setAuthorProfile(data.data)
+      }
+    }
+    getAuthor()
+  },[blogDetails.author,blogId,blogDetails])
+  const datePosted = blogDetails ? new Date(blogDetails.created_at).toDateString().slice(4) : '';
   const dateOfPost = datePosted.slice(0, 6)
+  
 
   return (
     <div className="blog-container">
@@ -15,16 +37,16 @@ const Blog = ({ blogs }) => {
         <div className="blog-header">
           <div className="author-details">
             <div className="author-profile-photo">
-              <img src={blogItem.author.profileImage} alt={blogItem.username} />
+              <img src={authorProfile?.user_profile?.profile_image || ProfileLogo} alt={authorProfile ? authorProfile.username : ''} />
             </div>
             <div className="blog-details">
               <div className="username">
-                <p>{blogItem.author.username}</p>
+                <p>{`${authorProfile ? authorProfile.first_name : ''} ${authorProfile ? authorProfile.last_name : ''}`}</p>
               </div>
               <div className="blog-info">
                 <p>{dateOfPost}</p>
                 <span>.</span>
-                <p>{blogItem.duration_reading}</p>
+                <p>{blogDetails ? `${blogDetails.duration_reading} read` : ""}</p>
               </div>
             </div>
           </div>
@@ -38,21 +60,21 @@ const Blog = ({ blogs }) => {
         </div>
         <div className="content-container">
           <article>
-            <h1>{blogItem.title}</h1>
+            <h1>{blogDetails ? blogDetails.title : ""}</h1>
             <div className="content-photo">
-              <img src={blogItem.imageUrl} alt={blogItem.title} />
+              <img src={blogDetails ? blogDetails.main_image : ""} alt={blogDetails ? blogDetails.title : ""} />
             </div>
-            <p>{blogItem.content}</p>
+            <p>{blogDetails ? blogDetails.blog_text : ""}</p>
           </article>
         </div>
       </div>
       <div className="author-info">
         <div className="author-profile-image">
-          <img src={blogItem.author.profileImage} alt={blogItem.author.username} />
+          <img src={ authorProfile.user_profile?.profile_image || ProfileLogo} alt="" />
         </div>
-        <p className="author-name">{blogItem.author.username}</p>
-        <p className="followers">{blogItem.author.followers ?  `${blogItem.author.followers} Followers` : "0 Followers"}</p>
-        <p className="author-description">{blogItem.author.about}</p>
+        <p className="author-name">{`${authorProfile ? authorProfile.first_name : ''} ${authorProfile ? authorProfile.last_name : ''}`}</p>
+        <p className="followers">{`@${authorProfile ? authorProfile.username : ''}`}</p>
+        <p className="author-description">{authorProfile ? authorProfile.user_profile?.bio : ""}</p>
         <div className="buttons">
           <button className="followBtn">Follow</button>
           <button className="emailBtn"><BsEnvelopePlus /></button>

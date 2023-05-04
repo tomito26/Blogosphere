@@ -1,14 +1,14 @@
-import { MdOutlineBookmarkAdd, MdOutlineDoDisturbOn } from "react-icons/md";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { MdOutlineBookmarkAdd, MdOutlineDoDisturbOn } from "react-icons/md";
 import ProfileLogo  from '../assets/profile.png'
 
-const Blogs = ({ blog }) => {
-	const dateOfPost = new Date(blog.created_at).toDateString().slice(4).trim();
+const SearchedBlog = ({ blog }) => {
+  const dateOfPost = new Date(blog.created_at).toDateString().slice(4).trim();
 	const newDate = dateOfPost.slice(0, 6) + ',' + dateOfPost.slice(6);
 	const [author, setAuthor] = useState({})
 
-	useEffect(() =>{
+  useEffect(() =>{
 		const getAuthor = async () => {
 			const res = await fetch(`http://localhost:8000/api/account/user_detail/${blog.author}/`);
 			const data = await res.json();
@@ -16,10 +16,8 @@ const Blogs = ({ blog }) => {
 		}
 		getAuthor()
 	},[blog.author])
-
-
-	return (
-		<div className="card">
+  return (
+    <div className="card">
 			<div className="card-header">
 				<div className="profile-info">
 					<div className="profile-image">
@@ -54,7 +52,7 @@ const Blogs = ({ blog }) => {
 				</div>
 			</div>
 		</div>
-	)
+  )
 }
 
-export default Blogs
+export default SearchedBlog

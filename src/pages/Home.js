@@ -1,9 +1,11 @@
 import Blogs from '../components/Blogs'
+
 const Home = ({ blogs }) => {
+ 
   return (
     <div className="container">
       <div className='wrapper'>
-        {blogs.map(blog => <Blogs key={blog.id} blog={blog} />)}
+        {blogs.map(blog => <Blogs key={blog.uid} blog={blog} />)}
       </div>
       <div className="container-tags">
         <h2>Recommended Topics</h2>

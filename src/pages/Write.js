@@ -34,7 +34,7 @@ const Write = ({ addBlog }) => {
         <h1>Write a blog</h1>
         <div className="form-group">
           <label htmlFor="title">Title</label>
-          <input type="text" name='title' id='title' placeholder='Write a title to your blog' value={newBlog.title} onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })} />
+          <input type="text" name='title' id='title' placeholder='Write a title to your blog' className='form-input' value={newBlog.title} onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })} />
         </div>
         <div className="form-group">
           <input type="file" name="imageUrl" id="imageUrl"  onChange={(e) => uploadImage(e.target.files[0])} />
@@ -45,15 +45,15 @@ const Write = ({ addBlog }) => {
         </div>
         <div className="form-group">
           <label htmlFor="date">Date </label>
-          <input type="date" name="date" id="date" value={newBlog.date_posted} onChange={(e) => setNewBlog({...newBlog, date_posted: e.target.value}) }/>
+          <input type="date" name="date" id="date" className='form-input' value={newBlog.date_posted} onChange={(e) => setNewBlog({...newBlog, date_posted: e.target.value}) }/>
         </div>
         <div className="form-group">
           <label htmlFor="duration">How long it will take for the reader to finish reading?</label>
-          <input type="text" name='duration' id='duration' placeholder='e.g 3min read' value={newBlog.duration_reading} onChange={(e) => setNewBlog({...newBlog, duration_reading: e.target.value}) }/>
+          <input type="text" name='duration' id='duration' placeholder='e.g 3min read' className='form-input' value={newBlog.duration_reading} onChange={(e) => setNewBlog({...newBlog, duration_reading: e.target.value}) }/>
         </div>
         <div className="form-group">
           <label htmlFor="tag">Tag</label>
-          <input type="text" name='tag' id='tag' placeholder='e.g React,HTML' value={newBlog.tag} onChange={(e) => setNewBlog({...newBlog, tag: e.target.value})}/>
+          <input type="text" name='tag' id='tag' placeholder='e.g React,HTML' className='form-input' value={newBlog.tag} onChange={(e) => setNewBlog({...newBlog, tag: e.target.value})}/>
         </div>
         <input type="submit" value="Publish" className='btn' />
       </form>
