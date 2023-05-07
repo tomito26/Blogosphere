@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaLink } from "react-icons/fa";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { BsEnvelopePlus } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import ProfileLogo from '../assets/profile.png'
+import Avatar from '../assets/profile_avatar.png'
 
 
 const Blog = () => {
@@ -37,7 +37,7 @@ const Blog = () => {
         <div className="blog-header">
           <div className="author-details">
             <div className="author-profile-photo">
-              <img src={authorProfile?.user_profile?.profile_image || ProfileLogo} alt={authorProfile ? authorProfile.username : ''} />
+              <img src={authorProfile?.user_profile?.profile_image || Avatar} alt={authorProfile ? authorProfile.username : ''} />
             </div>
             <div className="blog-details">
               <div className="username">
@@ -70,7 +70,7 @@ const Blog = () => {
       </div>
       <div className="author-info">
         <div className="author-profile-image">
-          <img src={ authorProfile.user_profile?.profile_image || ProfileLogo} alt="" />
+          <img src={ authorProfile.user_profile?.profile_image || Avatar} alt="" />
         </div>
         <p className="author-name">{`${authorProfile ? authorProfile.first_name : ''} ${authorProfile ? authorProfile.last_name : ''}`}</p>
         <p className="followers">{`@${authorProfile ? authorProfile.username : ''}`}</p>

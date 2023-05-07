@@ -53,17 +53,25 @@ nav ul li a {
 }
 
 nav ul li .dropdown-menu {
-  cursor: pointer;
+  cursor: pointer; 
+  border-radius: 30px;
   color: #fff;
   display: flex;
   align-items: center;
 }
 
-nav ul li .dropdown-menu img {
+nav ul li .dropdown-menu .user-image {
   height: 30px;
   width: 30px;
-  mix-blend-mode: multiply;
-  object-fit: fill;
+  border-radius: 50%;
+  border-radius: 1px solid #333;
+}
+
+.user-image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .dropdown-menu .profile-icon {
@@ -197,10 +205,11 @@ nav ul li .dropdown-menu img {
 }
 
 .card-header .profile-info .profile-image {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   margin-right: 10px;
+  border: 1px solid #ccc;
 }
 
 .profile-image img {
@@ -342,6 +351,7 @@ nav ul li .dropdown-menu img {
   width: 50px;
   border-radius: 50%;
   margin-right: 10px;
+  border: 1px solid #ccc;
 }
 
 .author-profile-photo img {
@@ -432,6 +442,7 @@ nav ul li .dropdown-menu img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
+  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
 }
@@ -513,7 +524,7 @@ form h1 {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
@@ -547,6 +558,10 @@ form .btn {
 form .btn:hover {
   background-color: #54B435;
 }
+.input-error{
+  color: #D21312;
+  margin-bottom: 10px;
+}
 
 /* register page  */
 .form-wrapper {
@@ -558,7 +573,7 @@ form .btn:hover {
  
 }
 form .error{
-  color: red;
+  color: #D21312;
   margin-bottom: 10px;
   font-size: inherit;
   text-transform: capitalize;
@@ -599,20 +614,27 @@ form .error{
 
 /* search page */
 .search-container {
+  min-height: 40vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+}
+.search-wrapper{
   margin-top: 120px;
 }
  /* / search error */ 
-
+.search-error{
+  margin-top: 20px;
+}
 .search-error h2{
   color: #333;
   font-size: 30px;
 }
 .search-error h2 span{
   color: #000;
+  font-style: italic;
 }
 .error-image{
   height: 300px;
@@ -623,4 +645,101 @@ form .error{
   width: 100%;
   object-fit: contain;
   margin-top: 40px;
+}
+/* profile-page */
+.profile-wrapper{
+  margin: 150px 0 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+}
+.user-details{
+  display: flex;
+  /* align-items: center; */
+  width: 700px;
+}
+.user-details .user-detail-image{
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+.user-detail-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-details .user-name{
+  margin:0 0 0 20px;
+}
+.user-details .user-name-details{
+  color: #333;
+  font-weight: 700;
+  font-size: 19px;
+}
+.user-details p:nth-child(2){
+  color: grey;
+  margin-bottom: 20px;
+}
+.user-detail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.user-detail-wrapper .editBtn{
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #333;
+  border: none;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  margin-left: 300px;
+}
+.editBtn:hover{
+  background-color: #000;
+}
+.user-blogs{
+  margin-top: 50px;
+}
+
+
+/* edit page  */
+.edit-wrapper{
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-wrapper form{
+  width: 500px;
+}
+.edit-wrapper .form-input{
+  background-color: #ccc;
+}
+.edit-wrapper .form-group textarea{
+  height: 100px;
+}
+.edit-wrapper .user-profile-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+.edit-wrapper .user-profile-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+}
+.edit-wrapper .upload-image{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

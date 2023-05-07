@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Avatar  from '../assets/profile_avatar.png'
 
-const Blogs = ({ blog }) => {
-	const dateOfPost = new Date(blog.created_at).toDateString().slice(4).trim();
+const UserBlogs = ({ blog }) => {
+  const dateOfPost = new Date(blog.created_at).toDateString().slice(4).trim();
 	const newDate = dateOfPost.slice(0, 6) + ',' + dateOfPost.slice(6);
 	const [author, setAuthor] = useState({})
 
@@ -16,10 +16,9 @@ const Blogs = ({ blog }) => {
 		}
 		getAuthor()
 	},[blog.author])
-
-
-	return (
-		<div className="card">
+  
+  return (
+    <div className="card">
 			<div className="card-header">
 				<div className="profile-info">
 					<div className="profile-image">
@@ -54,7 +53,7 @@ const Blogs = ({ blog }) => {
 				</div>
 			</div>
 		</div>
-	)
+  )
 }
 
-export default Blogs
+export default UserBlogs

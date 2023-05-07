@@ -1,18 +1,18 @@
 import Img from '../assets/blogosphere.svg';
+import Avatar from '../assets/profile_avatar.png'
 import { Link, NavLink } from 'react-router-dom';
 import { FaRegEdit, FaUser, FaAngleDown, FaCog, FaSignOutAlt, FaSearch } from 'react-icons/fa';
-import { MdAccountCircle } from "react-icons/md";
-import {  useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
 
 
 const Header = ({ onToggleMenu, dropdownMenu, setDropdownMenu }) => {
-	const [searchTerm, setSearchTerm]= useState("");
-	const { user, logoutUser } = useAuthContext();
+	const [searchTerm, setSearchTerm] = useState("");
+	const { user, logoutUser, profile } = useAuthContext();
+
 	const navigate = useNavigate();
 
-	
 	const signOut = () => {
 		logoutUser();
 		setDropdownMenu(false)
@@ -20,14 +20,12 @@ const Header = ({ onToggleMenu, dropdownMenu, setDropdownMenu }) => {
 
 	const findBlogs = (e) => {
 		e.preventDefault();
-		if(searchTerm) {
+		if (searchTerm) {
 			navigate(`/search/${searchTerm}`)
 
 		}
 	}
-	
 
-	
 
 	return (
 		<>
@@ -55,9 +53,12 @@ const Header = ({ onToggleMenu, dropdownMenu, setDropdownMenu }) => {
 						<li>
 							<div className='dropdown'>
 								<div className="dropdown-menu" onClick={() => onToggleMenu()}>
-									<MdAccountCircle className='profile-icon' />
+									{
+										<div className="user-image">
+											<img src={profile.user_profile?.profile_image || Avatar} alt={profile.username} />
+										</div>
+									}
 									<span><FaAngleDown /></span>
-
 								</div>
 								{dropdownMenu &&
 									<ul className='menu'>

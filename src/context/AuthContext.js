@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true)
+  const [profile, setProfile] = useState({});
 
 
 
@@ -59,6 +60,11 @@ export const AuthProvider = ({ children }) => {
     navigate('/login')
 
   }
+  const getProfile = async () => {
+    const res = await fetch(`http://localhost:8000/api/account/user_detail/${user?.user_id}/`)
+    const data = await res.json();
+    setProfile(data.data);
+  }
 
   const updateToken = async () => {
     console.log('update Token called');
@@ -98,17 +104,18 @@ export const AuthProvider = ({ children }) => {
         updateToken();
       }
     }, fourMinutes);
+    getProfile();
     return () => clearInterval(interval);
   }, [authToken, loading])
 
   return (
-    <AuthContext.Provider value={{ user, loginUser, authError, authToken, logoutUser }}>
+    <AuthContext.Provider value={{ user, loginUser, authError, authToken, logoutUser, profile }}>
       {loading ? null : children}
     </AuthContext.Provider>
   )
 }
 
 export const useAuthContext = () => {
-  const { user, loginUser, authError, authToken, logoutUser } = useContext(AuthContext);
-  return { user, loginUser, authError, authToken, logoutUser }
+  const { user, loginUser, authError, authToken, logoutUser, profile } = useContext(AuthContext);
+  return { user, loginUser, authError, authToken, logoutUser, profile }
 }

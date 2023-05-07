@@ -6,7 +6,7 @@ import SearchError from "./SearchError";
 
 const Search = () => {
   const { searchTerm } = useParams();
-  const [ blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     if (searchTerm) {
@@ -18,10 +18,12 @@ const Search = () => {
       findBlogItems();
     }
   }, [searchTerm]);
-  console.log(blogs)
+
   return (
     <div className="search-container">
-      {blogs.length > 0 ? blogs.map(blog =>  <SearchedBlog key={blog.uid} blog={blog} /> ) : <SearchError searchTerm={searchTerm}/>}
+      <div className="search-wrapper">
+        {blogs.length > 0 ? blogs.map(blog => <SearchedBlog key={blog.uid} blog={blog} />) : <SearchError searchTerm={searchTerm} />}
+      </div>
     </div>
   )
 }
