@@ -83,7 +83,7 @@ const Write = ({ addBlog }) => {
           <label htmlFor="tag">Tag</label>
           <input type="text" name='tag' id='tag' placeholder='e.g React,HTML' className='form-input' value={newBlog.tag} onChange={(e) => setNewBlog({ ...newBlog, [e.target.name]: e.target.value })} />
         </div>
-        <p className='input-error'>{inputError}</p>
+        {inputError  && <p className='input-error'>{inputError}</p>}
         <input type="submit" value="Publish" className='btn' />
       </form>
     </div>

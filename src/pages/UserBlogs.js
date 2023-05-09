@@ -33,7 +33,7 @@ const UserBlogs = ({ blog }) => {
 				<div className="card-wrapper">
 					<Link className="blog-link" to={`/blogs/${blog.uid}`}>
 						<h1>{blog.title}</h1>
-						<p>{blog.blog_text.length > 250 ? `${blog.blog_text.slice(0, 250)}...` : blog.text}</p>
+						<p>{blog.blog_text.length > 250 ? `${blog.blog_text.slice(0, 250)}...` : blog.blog_text}</p>
 					</Link>
 				</div>
 				<div className="content-image">

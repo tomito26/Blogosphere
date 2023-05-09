@@ -53,7 +53,7 @@ nav ul li a {
 }
 
 nav ul li .dropdown-menu {
-  cursor: pointer; 
+  cursor: pointer;
   border-radius: 30px;
   color: #fff;
   display: flex;
@@ -67,7 +67,7 @@ nav ul li .dropdown-menu .user-image {
   border-radius: 1px solid #333;
 }
 
-.user-image img{
+.user-image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -558,7 +558,8 @@ form .btn {
 form .btn:hover {
   background-color: #54B435;
 }
-.input-error{
+
+.input-error {
   color: #D21312;
   margin-bottom: 10px;
 }
@@ -570,45 +571,53 @@ form .btn:hover {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
- 
+
 }
-form .error{
+
+form .error {
   color: #D21312;
   margin-bottom: 10px;
   font-size: inherit;
   text-transform: capitalize;
 }
-.form-wrapper form{
+
+.form-wrapper form {
   width: 500px;
   background-color: #fff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
-  margin: 40px  0 30px;
+  margin: 40px 0 30px;
   padding: 30px;
 }
-.form-wrapper .form-group{
+
+.form-wrapper .form-group {
   margin-bottom: 15px;
 }
+
 /* .form-wrapper  p{
   margin-bottom: 20px;
 } */
-.form-wrapper form .register-link{
+.form-wrapper form .register-link {
   text-decoration: none;
 }
-.form-wrapper .form-control{
+
+.form-wrapper .form-control {
   width: 100%;
   height: 30px;
   padding: 5px 10px;
   font: inherit;
-  
+
 }
-.register-button{
+
+.register-button {
   margin: 5px 0 15px;
 }
-.register-button .btn{
+
+.register-button .btn {
   background-color: #000;
 }
-.register-button .btn:hover{
+
+.register-button .btn:hover {
   background-color: #333;
 }
 
@@ -621,75 +630,90 @@ form .error{
   align-items: center;
 
 }
-.search-wrapper{
+
+.search-wrapper {
   margin-top: 120px;
 }
- /* / search error */ 
-.search-error{
+
+/* / search error */
+.search-error {
   margin-top: 20px;
 }
-.search-error h2{
+
+.search-error h2 {
   color: #333;
   font-size: 30px;
 }
-.search-error h2 span{
+
+.search-error h2 span {
   color: #000;
   font-style: italic;
 }
-.error-image{
+
+.error-image {
   height: 300px;
   width: 400px;
 }
-.error-image img{
+
+.error-image img {
   height: 100%;
   width: 100%;
   object-fit: contain;
   margin-top: 40px;
 }
+
 /* profile-page */
-.profile-wrapper{
+.profile-wrapper {
   margin: 150px 0 100px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
-.user-details{
+
+.user-details {
   display: flex;
   /* align-items: center; */
   width: 700px;
 }
-.user-details .user-detail-image{
+
+.user-details .user-detail-image {
   height: 90px;
   width: 90px;
   border-radius: 50%;
   border: 1px solid #ccc;
 }
-.user-detail-image img{
+
+.user-detail-image img {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
-.user-details .user-name{
-  margin:0 0 0 20px;
+
+.user-details .user-name {
+  margin: 0 0 0 20px;
 }
-.user-details .user-name-details{
+
+.user-details .user-name-details {
   color: #333;
   font-weight: 700;
   font-size: 19px;
 }
-.user-details p:nth-child(2){
+
+.user-details p:nth-child(2) {
   color: grey;
   margin-bottom: 20px;
 }
+
 .user-detail-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
 }
-.user-detail-wrapper .editBtn{
+
+.user-detail-wrapper .editBtn {
   padding: 8px 20px;
   border-radius: 5px;
   background-color: #333;
@@ -699,37 +723,47 @@ form .error{
   cursor: pointer;
   margin-left: 300px;
 }
-.editBtn:hover{
+
+.editBtn:hover {
   background-color: #000;
 }
-.user-blogs{
+
+.user-blogs {
   margin-top: 50px;
+  margin-left: 40px;
 }
 
 
 /* edit page  */
-.edit-wrapper{
+.edit-wrapper {
   margin-top: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.edit-wrapper form{
+
+.edit-wrapper form {
   width: 500px;
 }
-.edit-wrapper .form-input{
+
+.edit-wrapper .form-input {
   background-color: #ccc;
 }
-.edit-wrapper .form-group textarea{
+
+.edit-wrapper .form-group textarea {
   height: 100px;
 }
-.edit-wrapper .user-profile-image{
+
+.edit-wrapper .upload-image {
   height: 100px;
   width: 100px;
+  position: relative;
+  margin: auto auto 30px;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 4px solid #ccc;
 }
-.edit-wrapper .user-profile-image img{
+
+.edit-wrapper .upload-image img {
   height: 100%;
   width: 100%;
   border-radius: 50%;
@@ -737,9 +771,54 @@ form .error{
   object-position: center;
 
 }
-.edit-wrapper .upload-image{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.edit-wrapper .upload-image .upload-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background-color: #2C74B3;
+  line-height: 33px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
 }
+
+.upload-button input[type="file"] {
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.submitBtn {
+  padding: 8px 15px;
+  background-color: #2F58CD;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  font: inherit;
+}
+
+.alert-success {
+  background-color: rgba(123, 235, 123, 0.6);
+  color: rgb(6, 187, 6);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* edit blog */
+.edit-blog{
+  position: absolute;
+  
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
