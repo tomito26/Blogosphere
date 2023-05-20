@@ -10,7 +10,7 @@ const Profile = () => {
       <div className="profile-wrapper">
         <div className="user-details" style={{borderBottom: '3px solid grey', paddingBottom:"30px"}}>
           <div className="user-detail-image">
-            <img src={profile.user_profile?.profile_image || Avatar} alt='' />
+            <img src={profile.user_profile?.profile_image ? profile.user_profile?.profile_image : Avatar} alt='' />
           </div>
           <div className="user-name">
             <div className='user-detail-wrapper'>

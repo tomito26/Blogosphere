@@ -20,9 +20,18 @@ function App() {
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const { pathname } = useLocation();
-  
+  const [blogsPerPage, setBlogsPerPage] = useState(5);
+  const numOfTotalPages = Math.ceil(blogs.length / blogsPerPage);
+  const pages = [...Array(numOfTotalPages + 1).keys()].slice(1);
+  const [currentPage, setCurrentPage] = useState(1)
+  const indexOfLastBlog = currentPage * blogsPerPage
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage
+  const visibleBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+
+
+
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
     const getBlogs = async () => {
       const blogsFromServer = await fetchBlogs();
@@ -39,6 +48,20 @@ function App() {
     return data.data;
 
   }
+  const prevPage = () => {
+    console.log(currentPage)
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  const nextPage = () => {
+    console.log(currentPage)
+    
+    if(currentPage < numOfTotalPages){
+      setCurrentPage(currentPage + 1);
+    }
+  }
 
   const toggleMenu = () => {
     setDropdownMenu(!dropdownMenu);
@@ -47,15 +70,15 @@ function App() {
   return (
     <div className="App" onDoubleClick={() => setDropdownMenu(false)}>
       <AuthProvider>
-        <Header onToggleMenu={toggleMenu}  dropdownMenu={dropdownMenu} setDropdownMenu={setDropdownMenu} />
+        <Header onToggleMenu={toggleMenu} dropdownMenu={dropdownMenu} setDropdownMenu={setDropdownMenu} />
         <Routes>
           <Route element={<PrivateRoutes />}>
-            <Route path='/' element={<Home blogs={blogs} />} />
+            <Route path='/' element={<Home visibleBlogs={visibleBlogs} pages={pages} setCurrentPage={setCurrentPage}  nextPage={nextPage} prevPage={prevPage} currentPage={currentPage} />}/>
             <Route path="/blogs/:blogId" element={<Blog blogs={blogs} />} />
-            <Route path="/write" element={<Write  />} />
-            <Route path="/search/:searchTerm" element={<Search />}/>
-            <Route path='/profile' element={<Profile/>}/>
-            <Route path='/profile/edit' element={<Edit/>}/>
+            <Route path="/write" element={<Write />} />
+            <Route path="/search/:searchTerm" element={<Search />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/edit' element={<Edit />} />
           </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />

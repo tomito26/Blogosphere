@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineBookmarkAdd, MdOutlineDoDisturbOn } from "react-icons/md";
-import ProfileLogo  from '../assets/profile.png'
+import Avatar from '../assets/profile_avatar.png'
 
 const SearchedBlog = ({ blog }) => {
   const dateOfPost = new Date(blog.created_at).toDateString().slice(4).trim();
@@ -21,7 +21,7 @@ const SearchedBlog = ({ blog }) => {
 			<div className="card-header">
 				<div className="profile-info">
 					<div className="profile-image">
-						<img src={author.user_profile?.profile_image || ProfileLogo} alt="profile" />
+						<img src={author.user_profile?.profile_image ? author.user_profile?.profile_image : Avatar} alt="profile" />
 					</div>
 					<p>{`${author?.first_name } ${author?.last_name}`}</p>
 				</div>
@@ -43,7 +43,7 @@ const SearchedBlog = ({ blog }) => {
 			</div>
 			<div className="card-footer">
 				<div className="footer-info">
-					<p className="tag"><Link className="tag-link" to={`/similar-blogs/${blog.tag}`}>{blog.tag}</Link></p>
+					<p className="tag">{blog.tag}</p>
 					<p>{`${blog.duration_reading} read`}</p>
 				</div>
 				<div className="footer-icons">

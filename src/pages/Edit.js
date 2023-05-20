@@ -20,7 +20,7 @@ const Edit = () => {
     const formData = new FormData();
     if (profile.user_profile) {
       try {
-        if (profile_image !== profile.user_profile?.profile_image && bio !== profile.user_profile?.bio) {
+        if (profile_image !== profile.user_profile?.profile_image) {
           formData.append('profile_image', profile_image);
           formData.append('bio', bio);
           formData.append('uid', profile.user_profile?.uid);
@@ -37,22 +37,7 @@ const Edit = () => {
           setNewProfile({ bio: data.data.bio, profile_image: data.data.profile_image });
           setAlertSuccess(data.message);
 
-        } else if (profile_image !== profile.user_profile?.profile_image && bio === profile.user_profile?.bio) {
-          formData.append('profile_image', profile_image);
-          formData.append('uid', profile.user_profile?.uid);
-          const res = await fetch(`http://localhost:8000/api/blogosphere/profile/`,
-            {
-              method: 'PATCH',
-              headers: {
-                Authorization: `Bearer ${authToken?.access}`
-              },
-              body: formData
-            }
-          );
-          const data = await res.json();
-          setNewProfile({ ...newProfile, profile_image: data.data.profile_image })
-          setAlertSuccess(data.message);
-        } else if (bio !== profile.user_profile?.bio && profile_image === profile.user_profile?.profile_image) {
+        }  else if(bio !== profile.user_profile?.bio){
           formData.append('uid', profile.user_profile?.uid);
           formData.append('bio', bio);
           const res = await fetch(`http://localhost:8000/api/blogosphere/profile/`,

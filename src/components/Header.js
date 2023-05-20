@@ -55,7 +55,7 @@ const Header = ({ onToggleMenu, dropdownMenu, setDropdownMenu }) => {
 								<div className="dropdown-menu" onClick={() => onToggleMenu()}>
 									{
 										<div className="user-image">
-											<img src={profile.user_profile?.profile_image || Avatar} alt={profile.username} />
+											<img src={profile.user_profile?.profile_image ? profile.user_profile?.profile_image : Avatar} alt={profile.username} />
 										</div>
 									}
 									<span><FaAngleDown /></span>

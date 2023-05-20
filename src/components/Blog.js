@@ -11,10 +11,10 @@ const Blog = () => {
   const [blogDetails, setBlogDetails] = useState({});
   const [authorProfile, setAuthorProfile] = useState({});
   const { blogId } = useParams();
-  const { profile,authToken } = useAuthContext();
-  const navigate =  useNavigate();
+  const { profile, authToken } = useAuthContext();
+  const navigate = useNavigate();
   const [editBlogPage, setEditBlogPage] = useState(false);
- 
+
 
   useEffect(() => {
     const getBlog = async () => {
@@ -36,19 +36,21 @@ const Blog = () => {
   const dateOfPost = datePosted.slice(0, 6)
 
   const deleteBlog = async () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
     const formData = new FormData();
     formData.append('uid', blogId)
-    console.log(authToken.access)
-    const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization : `Bearer ${authToken?.access}`
-        },
-        body: formData
-      }
-    )
-    navigate('/');
+    if (confirmDelete) {
+      const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${authToken?.access}`
+          },
+          body: formData
+        }
+      )
+      navigate('/');
+    }
   }
 
 
@@ -58,7 +60,7 @@ const Blog = () => {
         <div className="blog-header">
           <div className="author-details">
             <div className="author-profile-photo">
-              <img src={authorProfile?.user_profile?.profile_image || Avatar} alt={authorProfile ? authorProfile.username : ''} />
+              <img src={authorProfile.user_profile?.profile_image ? authorProfile.user_profile?.profile_image : Avatar} alt={authorProfile ? authorProfile.username : ''} />
             </div>
             <div className="blog-details">
               <div className="username">
@@ -76,7 +78,7 @@ const Blog = () => {
             <FaFacebook className="link" />
             <FaLinkedin className="link" />
             <FaLink className="link" />
-            {profile.user_profile?.user_profile === blogDetails.author ? <FaRegEdit className="link" onClick={() => setEditBlogPage(true)}/> : ""}
+            {profile.user_profile?.user_profile === blogDetails.author ? <FaRegEdit className="link" onClick={() => setEditBlogPage(true)} /> : ""}
             {profile.user_profile?.user_profile === blogDetails.author ? <FaTimesCircle className="link" onClick={deleteBlog} /> : ""}
             <MdOutlineBookmarkAdd className="link" />
           </div>
@@ -93,7 +95,7 @@ const Blog = () => {
       </div>
       <div className="author-info">
         <div className="author-profile-image">
-          <img src={authorProfile.user_profile?.profile_image || Avatar} alt="" />
+          <img src={authorProfile.user_profile?.profile_image ? authorProfile.user_profile?.profile_image : Avatar} alt="" />
         </div>
         <p className="author-name">{`${authorProfile ? authorProfile.first_name : ''} ${authorProfile ? authorProfile.last_name : ''}`}</p>
         <p className="followers">{`@${authorProfile ? authorProfile.username : ''}`}</p>
@@ -103,11 +105,11 @@ const Blog = () => {
           <button className="emailBtn"><BsEnvelopePlus /></button>
         </div>
       </div>
-      
-      { editBlogPage && 
-      <div className="edit-blog">
-        <EditBlog blogDetails={blogDetails}/> 
-      </div>}
+
+      {editBlogPage &&
+        <div className="edit-blog">
+          <EditBlog blogDetails={blogDetails} setEditBlogPage={setEditBlogPage} />
+        </div>}
 
     </div>
   )

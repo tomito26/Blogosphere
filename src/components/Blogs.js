@@ -23,7 +23,7 @@ const Blogs = ({ blog }) => {
 			<div className="card-header">
 				<div className="profile-info">
 					<div className="profile-image">
-						<img src={author.user_profile?.profile_image || Avatar} alt="profile" />
+						<img src={ author.user_profile?.profile_image ? author.user_profile?.profile_image : Avatar} alt="profile" />
 					</div>
 					<p>{`${author?.first_name } ${author?.last_name}`}</p>
 				</div>
@@ -45,7 +45,7 @@ const Blogs = ({ blog }) => {
 			</div>
 			<div className="card-footer">
 				<div className="footer-info">
-					<p className="tag"><Link className="tag-link" to={`/similar-blogs/${blog.tag}`}>{blog.tag}</Link></p>
+					<p className="tag">{blog.tag}</p>
 					<p>{`${blog.duration_reading} read`}</p>
 				</div>
 				<div className="footer-icons">
