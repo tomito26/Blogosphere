@@ -24,7 +24,7 @@ const Edit = () => {
           formData.append('profile_image', profile_image);
           formData.append('bio', bio);
           formData.append('uid', profile.user_profile?.uid);
-          const res = await fetch(`http://localhost:8000/api/blogosphere/profile/`,
+          const res = await fetch(`https://web-production-ac66.up.railway.app/api/blogosphere/profile/`,
             {
               method: 'PATCH',
               headers: {
@@ -40,7 +40,7 @@ const Edit = () => {
         }  else if(bio !== profile.user_profile?.bio){
           formData.append('uid', profile.user_profile?.uid);
           formData.append('bio', bio);
-          const res = await fetch(`http://localhost:8000/api/blogosphere/profile/`,
+          const res = await fetch(`https://web-production-ac66.up.railway.app/api/blogosphere/profile/`,
             {
               method: 'PATCH',
               headers: {
@@ -60,7 +60,7 @@ const Edit = () => {
       try {
         formData.append("profile_image", profile_image);
         formData.append("bio", bio);
-        const res = await fetch(`http://localhost:8000/api/blogosphere/profile/`,
+        const res = await fetch(`https://web-production-ac66.up.railway.app/api/blogosphere/profile/`,
           {
             method: "POST",
             headers: {
@@ -83,7 +83,7 @@ const Edit = () => {
         <form onSubmit={editProfile}>
           {alertSuccess && <p className='alert-success'>{alertSuccess}</p>}
           <div className="upload-image">
-            <img src={newProfile.profile_image ? newProfile.profile_image : Avatar} alt={profile.username} />
+            <img src={!newProfile.profile_image ? Avatar : newProfile.profile_image} alt={profile.username} />
             <div className="upload-button">
               <input type="file" name="profile_image" id="profile" onChange={(e) => setNewProfile({ ...newProfile, [e.target.name]: e.target.files[0] })} />
               <FaCamera />

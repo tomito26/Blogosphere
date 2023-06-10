@@ -11,7 +11,7 @@ const Search = () => {
   useEffect(() => {
     if (searchTerm) {
       const findBlogItems = async () => {
-        const res = await fetch(`http://localhost:8000/api/blogosphere/all_blogs/?search=${searchTerm}`);
+        const res = await fetch(`https://web-production-ac66.up.railway.app/api/blogosphere/all_blogs/?search=${searchTerm}`);
         const data = await res.json();
         setBlogs(data.data)
       }

@@ -23,7 +23,7 @@ const Register = () => {
       return setError('All input field is required')
     }
     try {
-      const res = await fetch('http://localhost:8000/api/account/register/',
+      const res = await fetch('https://web-production-ac66.up.railway.app/api/account/register/',
         {
           method: 'POST',
           headers: { 'Content-type': 'Application/json' },

@@ -26,7 +26,7 @@ const EditBlog = ({ blogDetails, setEditBlogPage }) => {
       formData.append('uid', blogDetails.uid);
 
       try {
-        const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
+        const res = await fetch('https://web-production-ac66.up.railway.app/api/blogosphere/blogs/',
           {
             method: 'PATCH',
             headers: {
@@ -50,7 +50,7 @@ const EditBlog = ({ blogDetails, setEditBlogPage }) => {
       formData.append('duration_reading', duration_reading);
       formData.append('uid', blogDetails.uid);
       try {
-        const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
+        const res = await fetch('https://web-production-ac66.up.railway.app/api/blogosphere/blogs/',
           {
             method: 'PATCH',
             headers: {

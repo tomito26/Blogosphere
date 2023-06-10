@@ -18,29 +18,33 @@ const Blog = () => {
 
   useEffect(() => {
     const getBlog = async () => {
-      const res = await fetch(`http://localhost:8000/api/blogosphere/blog_detail/${blogId}/`);
+      const res = await fetch(`https://web-production-ac66.up.railway.app/api/blogosphere/blog_detail/${blogId}/`);
       const data = await res.json();
       setBlogDetails(data.data);
     }
     getBlog();
+
     const getAuthor = async () => {
       if (blogDetails) {
-        const res = await fetch(`http://localhost:8000/api/account/user_detail/${blogDetails.author}/`)
+        const res = await fetch(`https://web-production-ac66.up.railway.app/api/account/user_detail/${blogDetails.author}/`)
         const data = await res.json();
         setAuthorProfile(data.data)
       }
     }
     getAuthor()
-  }, [blogDetails.author, blogId, blogDetails])
+  }, [blogDetails.author, blogId, blogDetails]);
+
   const datePosted = blogDetails ? new Date(blogDetails.created_at).toDateString().slice(4) : '';
-  const dateOfPost = datePosted.slice(0, 6)
+  const dateOfPost = datePosted.slice(0, 6);
+
+  
 
   const deleteBlog = async () => {
     const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
     const formData = new FormData();
     formData.append('uid', blogId)
     if (confirmDelete) {
-      const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
+      const res = await fetch('https://web-production-ac66.up.railway.app/api/blogosphere/blogs/',
         {
           method: 'DELETE',
           headers: {
@@ -78,7 +82,7 @@ const Blog = () => {
             <FaFacebook className="link" />
             <FaLinkedin className="link" />
             <FaLink className="link" />
-            {profile.user_profile?.user_profile === blogDetails.author ? <FaRegEdit className="link" onClick={() => setEditBlogPage(true)} /> : ""}
+            {profile.username === authorProfile.username ? <FaRegEdit className="link" onClick={() => setEditBlogPage(true)} /> : ""}
             {profile.user_profile?.user_profile === blogDetails.author ? <FaTimesCircle className="link" onClick={deleteBlog} /> : ""}
             <MdOutlineBookmarkAdd className="link" />
           </div>

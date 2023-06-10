@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async (loginDetails) => {
     try {
-      const res = await fetch('http://localhost:8000/api/account/login/',
+      const res = await fetch('https://web-production-ac66.up.railway.app/api/account/login/',
         {
           method: 'POST',
           headers: {
@@ -61,14 +61,14 @@ export const AuthProvider = ({ children }) => {
 
   }
   const getProfile = async () => {
-    const res = await fetch(`http://localhost:8000/api/account/user_detail/${user?.user_id}/`)
+    const res = await fetch(`https://web-production-ac66.up.railway.app/api/account/user_detail/${user?.user_id}/`)
     const data = await res.json();
     setProfile(data.data);
   }
 
   const updateToken = async () => {
     console.log('update Token called');
-    const res = await fetch(`http://localhost:8000/api/account/token/refresh/`,
+    const res = await fetch(`https://web-production-ac66.up.railway.app/api/account/token/refresh/`,
       {
         method: 'POST',
         headers: {

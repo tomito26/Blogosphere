@@ -10,7 +10,7 @@ const Blogs = ({ blog }) => {
 
 	useEffect(() =>{
 		const getAuthor = async () => {
-			const res = await fetch(`http://localhost:8000/api/account/user_detail/${blog.author}/`);
+			const res = await fetch(`https://web-production-ac66.up.railway.app/api/account/user_detail/${blog.author}/`);
 			const data = await res.json();
 			setAuthor(data.data);
 		}

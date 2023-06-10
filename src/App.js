@@ -42,7 +42,7 @@ function App() {
   }, [pathname])
 
   const fetchBlogs = async () => {
-    const response = await fetch('http://localhost:8000/api/blogosphere/all_blogs/');
+    const response = await fetch('https://web-production-ac66.up.railway.app/api/blogosphere/all_blogs/');
     const data = await response.json();
 
     return data.data;

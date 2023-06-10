@@ -33,7 +33,7 @@ const Write = ({ addBlog }) => {
       formData.append('tag', tag)
 
       try {
-        const res = await fetch('http://localhost:8000/api/blogosphere/blogs/',
+        const res = await fetch('https://web-production-ac66.up.railway.app/api/blogosphere/blogs/',
           {
             method: 'POST',
             headers: {

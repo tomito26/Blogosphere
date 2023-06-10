@@ -440,7 +440,7 @@ nav ul li .dropdown-menu .user-image {
   margin-bottom: 30px;
 }
 
-.content-container article img {
+.content-photo img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -889,4 +889,52 @@ input[type="file"]::-webkit-file-upload-button {
   right: 20px;
   color: #D21312;
   cursor: pointer;
+}
+
+@media only  screen and (max-width: 1090px) {
+  .container{
+    width:  100%;
+    padding-left: 20px;
+  }
+  header{
+    padding: 20px;
+  }
+
+  .container-tags{
+    width: 300px;
+    min-height: 280px;
+    right: 20px;
+  }
+  .card{
+    width: 600px;
+  }
+  .blog-container{
+    width: 100%;
+    padding-left: 20px;
+  }
+  .blog-wrapper{
+    width: 600px;
+  }
+  .author-info{
+    width: 300px;
+    right: 20px;
+  }
+  .content-photo img{
+    width: 550px;
+  }
+}
+@media only screen and (max-width: 768px) {
+
+  .container-tags,.author-info{
+    display: none;
+  }
+  .card{
+    width: 600px;
+    margin: 0 auto 30px;
+  }
+  .page-numbers{
+    margin-left: 40px;
+  }
+  
+  
 }
