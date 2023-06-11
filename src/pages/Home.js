@@ -29,7 +29,7 @@ const Home = ({ visibleBlogs, pages, setCurrentPage, prevPage, nextPage, current
       </div>
       <ul className='page-numbers'>
         <li className='page-number' onClick={prevPage}>Prev</li>
-        {pages.map(page => <li class={`page-number ${currentPage === page ? 'active-page' : ""}`} key={page} onClick={() => setCurrentPage(page)}>{page}</li>)}
+        {pages.map(page => <li className={`page-number ${currentPage === page ? 'active-page' : ""}`} key={page} onClick={() => setCurrentPage(page)}>{page}</li>)}
         <li className='page-number' onClick={nextPage}>Next</li>
       </ul>
     </div>

@@ -38,6 +38,7 @@ const EditBlog = ({ blogDetails, setEditBlogPage }) => {
         );
         const data = await res.json();
         setSuccess(data.message);
+        window.scrollTo(0,0);
 
       } catch (error) {
         console.log(error)
@@ -69,7 +70,8 @@ const EditBlog = ({ blogDetails, setEditBlogPage }) => {
           blog_text: data.data.blog_text,
           tag: data.data.tag,
           duration_reading: data.data.duration_reading
-        })
+        });
+        window.scrollTo(0,0)
 
 
       } catch (error) {

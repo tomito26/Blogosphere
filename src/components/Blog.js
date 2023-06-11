@@ -83,7 +83,7 @@ const Blog = () => {
             <FaLinkedin className="link" />
             <FaLink className="link" />
             {profile.username === authorProfile.username ? <FaRegEdit className="link" onClick={() => setEditBlogPage(true)} /> : ""}
-            {profile.user_profile?.user_profile === blogDetails.author ? <FaTimesCircle className="link" onClick={deleteBlog} /> : ""}
+            {profile.username === authorProfile.username ? <FaTimesCircle className="link" onClick={deleteBlog} /> : ""}
             <MdOutlineBookmarkAdd className="link" />
           </div>
         </div>
